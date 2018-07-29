@@ -18,7 +18,6 @@
 	volatile uint8_t alarm_hr;
 	volatile uint8_t alarm_min;
 	int point;
-	
  
 /** Timer2 Interrupt (on overflow), see datasheet
  * For vectors, refer to <avr/iom328p.h>
@@ -33,7 +32,6 @@ ISR(TIMER2_OVF_vect, ISR_BLOCK)
         /* not on AVRs (unless OCB bit set)                     */
         /* 	TIFR2 &= ~TOV2;                                 */
 }
-
 
 void sleep_ms(uint16_t ms_val)
 {
@@ -58,7 +56,6 @@ void sleep_ms(uint16_t ms_val)
 	}
 	sleep_disable();	/* Disable sleeps for safety */		
 }
-
 
 static struct segm_Port PB = {
 	.DDR = &DDRB,
@@ -92,22 +89,21 @@ void t1_init()
 
 	/* Interrupt for count seconds */
 ISR(TIMER1_OVF_vect)
-	{
-		point ^= 1;
-		second++;
-		if (second >= 60){   
-			minute++;
-			second = 0;
-		}
-		if (minute >= 60){
-			hour++;
-			minute = 0;
-		}
-		if (hour >= 24){
-			hour=0;
-		}
-		
+{
+	point ^= 1;
+	second++;
+	if (second >= 60){   
+		minute++;
+		second = 0;
 	}
+	if (minute >= 60){
+		hour++;
+		minute = 0;
+	}
+	if (hour >= 24){
+		hour=0;
+	}
+}
 
 void int_ini(void)
 {
@@ -123,8 +119,7 @@ ISR(INT0_vect)
 uint8_t arr_al[] = {0, 0, 0, 0};
 						
 	alarm_hr++;
-	if (alarm_hr >= 24)
-	{
+	if (alarm_hr >= 24){
 		alarm_hr = 0;
 	}
 	BIN2BCD(arr_al, alarm_hr);
@@ -133,16 +128,13 @@ uint8_t arr_al[] = {0, 0, 0, 0};
 	}
 	for (int j = 0; j < 50; j++)
 		segm_indicate4(&display, arr_al);
-
-
 }
 /* external interrupt for alarm */
 ISR(INT1_vect)
 {	/* setting an alarm minutes */
 	uint8_t arr_al[] = {0, 0, 0, 0};
 	alarm_min++;
-	if (alarm_min >= 60)
-	{
+	if (alarm_min >= 60){
 		alarm_min = 0;
 	}
 	BIN2BCD(arr_al+2, alarm_min);
@@ -210,6 +202,4 @@ int main(void)
 			PORTD &= ~(1 << 7);
 		
 	}
-	
-	
 }
