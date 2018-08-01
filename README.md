@@ -10,4 +10,4 @@ Part of code written by @thodnev. Thanks for helping  Timofei Hodnev.
 ![Example 1](https://github.com/SVS97/Cloks/blob/master/Example1.jpg)
 ![Example 2](https://github.com/SVS97/Cloks/blob/master/Example2.jpg)
 
-More information yoo can get [here] (https://youtu.be/p7sjBAfZE0U)
+More information yoo can get [here](https://youtu.be/p7sjBAfZE0U)
