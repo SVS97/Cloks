@@ -23,6 +23,7 @@
  * For vectors, refer to <avr/iom328p.h>
  * For more on interrupts handling with AVR-GCC see
  * https://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html
+ * Written by @thodnev
  */
 ISR(TIMER2_OVF_vect, ISR_BLOCK)
 {

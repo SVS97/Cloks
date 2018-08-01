@@ -1,3 +1,6 @@
+/* Library for shift register display */
+/* Written by @thodnev		      */
+
 #include <stdint.h>
 #include <stdbool.h>
 
